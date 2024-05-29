@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink} from "react-router-dom";
 
 export class Categories extends Component {
 	constructor(props) {
@@ -28,9 +29,9 @@ export class Categories extends Component {
 		return (
 			<div className='categories'>
 				{this.state.categories.map(el => (
-					<div key={el.key} onClick={() => this.props.chooseCategory(el.key)}>
+					<NavLink to={`/category/${el.key}`} key={el.key} onClick={() => this.props.chooseCategory(el.key)}>
 						{el.name}
-					</div>
+					</NavLink>
 				))}
 			</div>
 		)

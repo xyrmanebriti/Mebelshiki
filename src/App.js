@@ -3,7 +3,13 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Items from './components/Items'
 import Categories from './components/Categories'
+import {Routes, Route } from 'react-router-dom';
 import ShowFullItem from './components/ShowFullItem'
+import Chair from './img/chair.jpg'
+import ErgoOffChair from './img/ergonomic_chair.jpg'
+import OffChair from './img/office_chair.jpg'
+import OffDesk from './img/desk.jpg'
+import Table from './img/table.jpg'
 
 class App extends React.Component {
 	constructor(props) {
@@ -15,7 +21,7 @@ class App extends React.Component {
 				{
 					id: 1,
 					title: 'Chair',
-					img: 'chair.jpg',
+					img: Chair,
 					desc: 'A comfortable chair for your home office',
 					category: 'chairs',
 					price: '990$',
@@ -23,7 +29,7 @@ class App extends React.Component {
 				{
 					id: 2,
 					title: 'Table',
-					img: 'table.jpg',
+					img: Table,
 					desc: 'A comfortable table for your home office',
 					category: 'tables',
 					price: '2190$',
@@ -31,7 +37,7 @@ class App extends React.Component {
 				{
 					id: 3,
 					title: 'Office Chair',
-					img: 'chair.jpg',
+					img: OffChair,
 					desc: 'A comfortable office chair for your home office',
 					category: 'chairs',
 					price: '249$',
@@ -39,7 +45,7 @@ class App extends React.Component {
 				{
 					id: 4,
 					title: 'Ergonomic Office Chair',
-					img: 'ergonomic_chair.jpg',
+					img: ErgoOffChair,
 					desc: 'A comfortable chair for your home',
 					category: 'chairs',
 					price: '1889$',
@@ -47,7 +53,7 @@ class App extends React.Component {
 				{
 					id: 5,
 					title: 'Office Desk',
-					img: 'desk.jpg',
+					img: OffDesk,
 					desc: 'A comfortable desk for your home office',
 					category: 'desks',
 					price: '1990$',
@@ -67,18 +73,32 @@ class App extends React.Component {
 			<div className='wrapper'>
 				<Header orders={this.state.orders} onDelete={this.deleteOrder} />
 				<Categories chooseCategory={this.chooseCategory} />
-				<Items
-					onShowItem={this.onShowItem}
-					items={this.state.currentItems}
-					onAdd={this.addToOrder}
-				/>
-
+				<Routes>
+					<Route path='/' element={
+						<Items
+						onShowItem={this.onShowItem}
+						items={this.state.items}
+						onAdd={this.addToOrder}
+						/>
+					} />
+					<Route
+						path='/category/:category'
+						element={
+							<Items
+								onShowItem={this.onShowItem}
+								items={this.state.currentItems}
+								onAdd={this.addToOrder}
+							/>
+						}
+					/>
+					<Route path='/about' element={<div> About </div>} />
+					<Route path='/contacts' element={<div> Contacts </div>} />
+				</Routes>
 				{this.state.showFullItem && <ShowFullItem onAdd={this.addToOrder} onShowItem={this.onShowItem} item={this.state.fullItem} />}
 				<Footer />
 			</div>
 		)
 	}
-
 	onShowItem(item) {
     this.setState({ fullItem: item })
 		this.setState({ showFullItem: !this.state.showFullItem })

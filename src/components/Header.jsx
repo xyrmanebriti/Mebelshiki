@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FaBasketShopping } from 'react-icons/fa6'
 import Order from './Order'
+import {NavLink} from "react-router-dom";
 
 const showOrders = props => {
 	let total = 0
@@ -33,7 +34,7 @@ export default function Header(props) {
 	return (
 		<header>
 			<div>
-				<span className='logo'>Immoniti Interiors</span>
+				<span className='logo'><NavLink to="/">Immoniti Interiors</NavLink></span>
 				<ul className='nav'>
 					<li>About Us</li>
 					<li>Contacts</li>
