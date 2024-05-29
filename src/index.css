@@ -45,6 +45,15 @@ header ul.nav li{
 header ul.nav li:hover{
   opacity: 50%;
 }
+header ul.nav li a{
+  text-decoration: none;
+  color:black;
+}
+header ul.nav li a.active{
+  text-decoration: none;
+  color:black;
+  opacity: 50%;
+}
 
 header .basket-button{
   float: right;
@@ -96,6 +105,9 @@ header .shop-cart .item h2{
 header .shop-cart .item b{
   color: #797979;
   font-weight: 600;
+}
+.item{
+  text-decoration: none;
 }
 
 header .shop-cart .item .delete-icon{
@@ -189,21 +201,13 @@ main{
 }
 
 .full-item{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 9999;
-  overflow: auto;
+  width: 100%;
 }
 
 .full-item > div{
-  width: 600px;
+  width: 90%;
   position: relative;
-  margin: 10% auto;
-  padding: 40px 30px;
+  margin: auto;
   background: #fff;
   border-radius: 9px;
 }
@@ -217,7 +221,7 @@ main .item{
   padding-bottom: 20px;
 }
 
-main .item img, .full-item img{
+main .item img{
   width: 100%;
   height: 512px;
   border-radius: 10px 10px 0 0;
@@ -225,8 +229,14 @@ main .item img, .full-item img{
   object-fit: cover;
   cursor: pointer;
 }
+.full-item img{
+  width: 100%;
+  transition: transform 500ms ease;
+  object-fit: cover;
+  cursor: pointer;
+}
 
-main .item img:hover, .full-item img:hover{
+main .item img:hover{
   transform: scale(1.05);
 }
 
@@ -264,6 +274,68 @@ main .add-to-cart:hover,
   transform: scale(1.5) translateY(-5px);
 }
 
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.container section {
+  margin-bottom: 30px;
+}
+
+.container h1, h2, h3 {
+  color: #333;
+}
+
+.container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.container ul li {
+  margin-bottom: 10px;
+}
+#contact-info ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#contact-info li {
+  margin-bottom: 10px;
+}
+
+#contact-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#contact-form textarea {
+  resize: none;
+}
+
+#contact-form button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#contact-form button:hover {
+  background-color: #555;
+}
 footer{
   text-align: center;
   margin-top: 100px;

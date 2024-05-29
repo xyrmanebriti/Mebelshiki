@@ -3,13 +3,16 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Items from './components/Items'
 import Categories from './components/Categories'
-import {Routes, Route } from 'react-router-dom';
+import About from './components/About'
+import {Routes, Route, useParams} from 'react-router-dom';
 import ShowFullItem from './components/ShowFullItem'
 import Chair from './img/chair.jpg'
 import ErgoOffChair from './img/ergonomic_chair.jpg'
 import OffChair from './img/office_chair.jpg'
 import OffDesk from './img/desk.jpg'
 import Table from './img/table.jpg'
+import Contacts from "./components/Contacts";
+import Account from "./components/Account";
 
 class App extends React.Component {
 	constructor(props) {
@@ -59,49 +62,53 @@ class App extends React.Component {
 					price: '1990$',
 				},
 			],
-			showFullItem: false,
-      fullItem: {}
 		}
 		this.state.currentItems = this.state.items
 		this.addToOrder = this.addToOrder.bind(this)
 		this.deleteOrder = this.deleteOrder.bind(this)
 		this.chooseCategory = this.chooseCategory.bind(this)
-		this.onShowItem = this.onShowItem.bind(this)
+
 	}
 	render() {
 		return (
 			<div className='wrapper'>
 				<Header orders={this.state.orders} onDelete={this.deleteOrder} />
-				<Categories chooseCategory={this.chooseCategory} />
 				<Routes>
 					<Route path='/' element={
-						<Items
-						onShowItem={this.onShowItem}
-						items={this.state.items}
-						onAdd={this.addToOrder}
-						/>
+						<>
+							<Categories chooseCategory={this.chooseCategory} />
+							<Items
+								items={this.state.items}
+								onAdd={this.addToOrder}
+							/>
+						</>
+					}>
+					</Route>
+					<Route path='/category/:category/:id' element={
+						<>
+							<Categories chooseCategory={this.chooseCategory} />
+							<ShowFullItem onAdd={this.addToOrder} items={this.state.items} />
+						</>
 					} />
 					<Route
 						path='/category/:category'
 						element={
-							<Items
-								onShowItem={this.onShowItem}
-								items={this.state.currentItems}
-								onAdd={this.addToOrder}
-							/>
+							<>
+								<Categories chooseCategory={this.chooseCategory} />
+								<Items
+									items={this.state.currentItems}
+									onAdd={this.addToOrder}
+								/>
+							</>
 						}
 					/>
-					<Route path='/about' element={<div> About </div>} />
-					<Route path='/contacts' element={<div> Contacts </div>} />
+					<Route path='/about' element={<About/>} />
+					<Route path='/contacts' element={<Contacts/>} />
+					<Route path='/account' element={<Account/>} />
 				</Routes>
-				{this.state.showFullItem && <ShowFullItem onAdd={this.addToOrder} onShowItem={this.onShowItem} item={this.state.fullItem} />}
 				<Footer />
 			</div>
 		)
-	}
-	onShowItem(item) {
-    this.setState({ fullItem: item })
-		this.setState({ showFullItem: !this.state.showFullItem })
 	}
 
 	chooseCategory(category) {

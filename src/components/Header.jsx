@@ -36,9 +36,9 @@ export default function Header(props) {
 			<div>
 				<span className='logo'><NavLink to="/">Immoniti Interiors</NavLink></span>
 				<ul className='nav'>
-					<li>About Us</li>
-					<li>Contacts</li>
-					<li>Account</li>
+					<li><NavLink to="/about">About Us</NavLink></li>
+					<li><NavLink to="/contacts">Contacts</NavLink></li>
+					<li><NavLink to="/account">Account</NavLink></li>
 				</ul>
 				<FaBasketShopping
 					onClick={() => setCartOpen((cartOpen = !cartOpen))}

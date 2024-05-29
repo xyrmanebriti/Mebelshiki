@@ -1,28 +1,27 @@
 import React, { Component } from 'react'
+import {useParams} from "react-router-dom";
 
-export class ShowFullItem extends Component {
-	render() {
-		return (
-			<div className='full-item'>
-				<div>
-					<img
-						src={this.props.item.img}
-						alt={this.props.item.title}
-						onClick={() => this.props.onShowItem(this.props.item)}
-					/>
-					<h2>{this.props.item.title}</h2>
-					<p>{this.props.item.desc}</p>
-					<b>{this.props.item.price}</b>
-					<div
-						className='add-to-cart'
-						onClick={() => this.props.onAdd(this.props.item)}
-					>
-						+
-					</div>
+function ShowFullItem({ items, onAdd }) {
+	const { id } = useParams();
+	const item = items.find(item => item.id === parseInt(id));
+
+	if (!item) {
+		return <div>Товар не найден</div>;
+	}
+
+	return (
+		<div className='full-item'>
+			<div>
+				<img src={item.img} alt={item.title} />
+				<h2>{item.title}</h2>
+				<p>{item.desc}</p>
+				<b>{item.price}</b>
+				<div className='add-to-cart' onClick={() => onAdd(item)}>
+					+
 				</div>
 			</div>
-		)
-	}
+		</div>
+	);
 }
 
-export default ShowFullItem
+export default ShowFullItem;
