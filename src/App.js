@@ -4,7 +4,7 @@ import Footer from './components/Footer'
 import Items from './components/Items'
 import Categories from './components/Categories'
 import About from './components/About'
-import {Routes, Route, useParams} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import ShowFullItem from './components/ShowFullItem'
 import Chair from './img/chair.jpg'
 import ErgoOffChair from './img/ergonomic_chair.jpg'
