@@ -4,6 +4,7 @@ export default function About() {
         <div className="container">
             <section id="mission">
                 <h2>Our Mission</h2>
+                <br></br>
                 <p>
                     At Immoniti Interiors, we believe that furniture should not only be visually appealing but also
                     functional, comfortable, and durable. Our mission is to create interiors that inspire and bring joy
@@ -13,6 +14,7 @@ export default function About() {
             </section>
             <section id="why-us">
                 <h2>Why Choose Us?</h2>
+                <br></br>
                 <ul>
                     <li>
                         <h3>Individual Approach</h3>
@@ -20,18 +22,21 @@ export default function About() {
                             project. Our team of designers and furniture specialists works closely with you to bring
                             your ideas to life.</p>
                     </li>
+                    <br></br>
                     <li>
                         <h3>High Quality</h3>
                         <p>We use only the finest materials and proven manufacturing techniques to ensure that every
                             detail of your furniture is perfect. Our products are known for their strength and
                             durability, making them a wise investment for many years to come.</p>
                     </li>
+                    <br></br>
                     <li>
                         <h3>Design and Aesthetics</h3>
                         <p>At Immoniti Interiors, we pay special attention to design. Our furniture blends modern trends
                             with classic elements, creating harmonious and stylish interiors. We aim for every piece to
                             bring pleasure and joy.</p>
                     </li>
+                    <br></br>
                     <li>
                         <h3>Eco-Friendly</h3>
                         <p>We care about our planet and strive to use environmentally friendly materials and production
@@ -41,6 +46,7 @@ export default function About() {
             </section>
             <section id="services">
                 <h2>Our Services</h2>
+                <br></br>
                 <ul>
                     <li>Custom Furniture Design</li>
                     <li>Interior Decoration</li>

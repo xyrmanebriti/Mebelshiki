@@ -12,7 +12,7 @@ export default function Account(){
                     <li><strong>Phone:</strong> +1 (555) 123-4567</li>
                 </ul>
             </section>
-            <section id="change-password">
+            <section id="change-password" className="section-container">
                 <h2>Change Password</h2>
                 <form action="#" method="post">
                     <label for="current-password">Current Password:</label>
@@ -24,9 +24,11 @@ export default function Account(){
                     <button type="submit">Change Password</button>
                 </form>
             </section>
-            <section id="logout">
+            <section id="logout" className="section-container">
                 <h2>Logout</h2>
+                <br></br>
                 <p>If you're finished, you can logout from your account.</p>
+                <br></br>
                 <button onClick="logout()">Logout</button>
             </section>
         </div>

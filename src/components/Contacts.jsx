@@ -4,7 +4,9 @@ export default function Contacts() {
         <div className="container">
             <section id="contact-info">
                 <h2>Contact Information</h2>
+                <br></br>
                 <p>Feel free to reach out to us via phone or email. You can also visit our showroom during business hours.</p>
+                <br></br>
                 <ul>
                     <li><strong>Phone:</strong> +1 (555) 123-4567</li>
                     <li><strong>Email:</strong> info@immoniti.com</li>
@@ -14,6 +16,7 @@ export default function Contacts() {
             </section>
             <section id="contact-form">
                 <h2>Get In Touch</h2>
+                <br></br>
                 <form action="#">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required/>
