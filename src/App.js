@@ -20,7 +20,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			orders: [],
+			orders: (localStorage.getItem('orders')!=null?JSON.parse(localStorage.getItem('orders')):[]),
 			currentItems: [],
 			items: [
 				{
@@ -75,9 +75,7 @@ class App extends React.Component {
 		return (
 			<div className='wrapper'>
 				<Header orders={this.state.orders} onDelete={this.deleteOrder}/>
-				<ToastContainer
-
-				/>
+				<ToastContainer/>
 				<Routes>
 					<Route path='/' element={
 						<>
@@ -130,7 +128,8 @@ class App extends React.Component {
 		this.setState(prevState => {
 			const orders = prevState.orders
 				.map(order => order.id === id ? { ...order, quantity: order.quantity - 1 } : order)
-				.filter(order => order.quantity > 0)
+				.filter(order => order.quantity > 0);
+			localStorage.setItem('orders', JSON.stringify(orders));
 			return { orders }
 		})
 	}
@@ -150,7 +149,7 @@ class App extends React.Component {
 			if (!itemExists) {
 				orders.push({ ...item, quantity: 1 });
 			}
-
+			localStorage.setItem('orders', JSON.stringify(orders));
 			return { orders }
 		});
 	}
