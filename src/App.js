@@ -13,6 +13,8 @@ import OffDesk from './img/desk.jpg'
 import Table from './img/table.jpg'
 import Contacts from "./components/Contacts";
 import Account from "./components/Account";
+import "react-toastify/dist/ReactToastify.css";
+import {ToastContainer} from "react-toastify";
 
 class App extends React.Component {
 	constructor(props) {
@@ -72,7 +74,10 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className='wrapper'>
-				<Header orders={this.state.orders} onDelete={this.deleteOrder} />
+				<Header orders={this.state.orders} onDelete={this.deleteOrder}/>
+				<ToastContainer
+
+				/>
 				<Routes>
 					<Route path='/' element={
 						<>
@@ -122,17 +127,32 @@ class App extends React.Component {
 	}
 
 	deleteOrder(id) {
-		this.setState({ orders: this.state.orders.filter(el => el.id !== id) })
+		this.setState(prevState => {
+			const orders = prevState.orders
+				.map(order => order.id === id ? { ...order, quantity: order.quantity - 1 } : order)
+				.filter(order => order.quantity > 0)
+			return { orders }
+		})
 	}
 
 	addToOrder(item) {
-		let isInArray = false
-		this.state.orders.forEach(el => {
-			if (el.id === item.id) {
-				isInArray = true
+		this.setState(prevState => {
+			let itemExists = false;
+
+			const orders = prevState.orders.map(order => {
+				if (order.id === item.id) {
+					itemExists = true;
+					return { ...order, quantity: order.quantity + 1 }
+				}
+				return order;
+			});
+
+			if (!itemExists) {
+				orders.push({ ...item, quantity: 1 });
 			}
-		})
-		if (!isInArray) this.setState({ orders: [...this.state.orders, item] })
+
+			return { orders }
+		});
 	}
 }
 

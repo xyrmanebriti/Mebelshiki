@@ -6,7 +6,7 @@ import {NavLink} from "react-router-dom";
 const showOrders = props => {
 	let total = 0
 	props.orders.forEach(el => {
-		total += parseFloat(el.price)
+		total += parseFloat(el.price)*el.quantity
 	})
 
 	return (

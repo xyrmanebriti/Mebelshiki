@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {NavLink} from "react-router-dom";
+import {Bounce, toast} from "react-toastify";
 
 export class Item extends Component {
 	render() {
@@ -16,7 +17,21 @@ export class Item extends Component {
 				<b>{this.props.item.price}</b>
 				<div
 					className='add-to-cart'
-					onClick={() => this.props.onAdd(this.props.item)}
+					onClick={() => {
+						this.props.onAdd(this.props.item);
+						toast.success(this.props.item.title+' added to cart', {
+							position: "top-right",
+							autoClose: 5000,
+							hideProgressBar: false,
+							closeOnClick: true,
+							pauseOnHover: false,
+							draggable: true,
+							theme: "dark",
+							transition: Bounce,
+							}
+						);
+					}
+				}
 				>
 					+
 				</div>
